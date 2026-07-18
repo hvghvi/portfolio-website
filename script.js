@@ -4,7 +4,13 @@ function openModal(name) {
 }
 
 function closeModal(name) {
-    document.getElementById('overlay-' + name).classList.remove('open')
+    const overlay = document.getElementById('overlay-' + name)
+    overlay.classList.add('closing')
+
+    overlay.addEventListener('animationend', () => {
+        overlay.classList.remove('open')
+        overlay.classList.remove('closing')
+    }, { once: true }) //listener goes away after closing
 }
 
 
