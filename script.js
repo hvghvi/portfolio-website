@@ -1,51 +1,28 @@
+let zTop = 100
+
+// open
 function openModal(name) {
-    document.getElementById('overlay-' + name).classList.add('open')
-
+    const modal = document.getElementById('modal-' + name)
+    modal.classList.add('open')
+    modal.style.zIndex = ++zTop
+    modal.style.transform = 'translate(-50%, -50%)'  // reset position to center
 }
 
+// close with animation
 function closeModal(name) {
-    const overlay = document.getElementById('overlay-' + name)
-    overlay.classList.add('closing')
+    const modal = document.getElementById('modal-' + name)
 
-    overlay.addEventListener('animationend', () => {
-        overlay.classList.remove('open')
-        overlay.classList.remove('closing')
-    }, { once: true }) //listener goes away after closing
+    modal.classList.add('closing')
+
+    modal.addEventListener('animationend', () => {
+        modal.classList.remove('open')
+        modal.classList.remove('closing')
+    }, { once: true })
 }
 
-
-// these listeners should be updated !! 
-
-// click outside to close feature for a modal 
-document.getElementById('overlay-about').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-        closeModal('about')
-    }
+// clicking a modal brings it to front
+document.querySelectorAll('.modal').forEach(modal => {
+    modal.addEventListener('mousedown', () => {
+        modal.style.zIndex = ++zTop
+    })
 })
-
-
-// click outside to close feature for a modal 
-document.getElementById('overlay-projects').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-        closeModal('projects')
-    }
-})
-
-
-// click outside to close feature for a modal 
-document.getElementById('overlay-contact').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-        closeModal('contact')
-    }
-})
-
-//document.addEventListener('keydown', (e) => {
-    //if (e.key === 'Escape') {
-   //     closeModal('about')
-   // }
-// these current listeners would not work when theres multiple open
-//feature might be removed in the future.
-//not needed at all!
-
-//drag feature below:
-
