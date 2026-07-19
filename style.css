@@ -443,3 +443,67 @@ nav a.active {
 }
 
 /* Dark mode styles */
+
+
+/*mobile responsiveness*/
+@media (max-width: 768px) {
+    .card-container {
+        width: 90vw;
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    .greeting {
+        font-size: 36px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .menu {
+        gap: 20px;
+    }
+
+    .modal {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    .about-row {
+        flex-direction: column;
+        min-width: unset;
+    }
+
+    .about-text {
+        max-width: 100%;
+    }
+
+    .images-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .section {
+        width: 200px;
+        height: 200px;
+    }
+
+    #modal-projects {
+        width: 85vw !important;
+        min-width: unset !important;
+        max-width: 85vw !important;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: auto !important;
+        object-fit: cover;
+    }
+
+
+    .project-information {
+        flex-wrap: wrap;
+    }
+
+}

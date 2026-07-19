@@ -3,22 +3,23 @@ let offsetX = 0
 let offsetY = 0
 let draggedModal = null
 let zTop = 100
+const isMobile = () => window.innerWidth <= 768
 
 // open
 function openModal(name) {
     const modal = document.getElementById('modal-' + name)
-    
-    if (modal.classList.contains('open')) return  // do nothing if already open
+    if (modal.classList.contains('open')) return
 
-    modal.style.display = 'flex'  // make it visible first
-    
-    // now it has a size, calculate center
-    modal.style.left = (window.innerWidth / 2 - modal.offsetWidth / 2) + 'px'
-    modal.style.top = (window.innerHeight / 2 - modal.offsetHeight / 2) + 'px'
-    modal.style.transform = 'none'
+    modal.style.display = 'flex'
+
+    if (!isMobile()) {
+        modal.style.left = (window.innerWidth / 2 - modal.offsetWidth / 2) + 'px'
+        modal.style.top = (window.innerHeight / 2 - modal.offsetHeight / 2) + 'px'
+        modal.style.transform = 'none'
+    }
+
     modal.style.zIndex = ++zTop
-
-    modal.classList.add('open')  // triggers animation after position is set
+    modal.classList.add('open')
 }
 
 
@@ -45,18 +46,20 @@ document.querySelectorAll('.modal').forEach(modal => {
 
 //for drag:
 //mousedown + mousemove + mouseup
+//disabled for mobile devices
 document.querySelectorAll('.modal-top-bar').forEach(titlebar => {
     titlebar.addEventListener('mousedown', (e) => {
+        if (isMobile()) return
         if (e.target.classList.contains('dot')) return
 
         isDragging = true
         draggedModal = titlebar.closest('.modal')
         draggedModal.style.zIndex = ++zTop
-
         offsetX = e.clientX - draggedModal.getBoundingClientRect().left
         offsetY = e.clientY - draggedModal.getBoundingClientRect().top
     })
 })
+
 
 document.addEventListener('mousemove', (e) => {
     if (!isDragging) return
