@@ -59,11 +59,19 @@ document.querySelectorAll('.modal-top-bar').forEach(titlebar => {
 document.addEventListener('mousemove', (e) => {
     if (!isDragging) return
 
-    draggedModal.style.left = e.clientX - offsetX + 'px'
-    draggedModal.style.top  = e.clientY - offsetY + 'px'
+    let newLeft = e.clientX - offsetX
+    let newTop = e.clientY - offsetY
+
+    const maxLeft = window.innerWidth - draggedModal.offsetWidth
+    const maxTop = window.innerHeight - draggedModal.offsetHeight
+
+    newLeft = Math.max(0, Math.min(newLeft, maxLeft))
+    newTop = Math.max(0, Math.min(newTop, maxTop))
+
+    draggedModal.style.left = newLeft + 'px'
+    draggedModal.style.top = newTop + 'px'
     draggedModal.style.transform = 'none'
 })
-
 
 document.addEventListener('mouseup', () => {
     isDragging = false

@@ -230,7 +230,7 @@ transform: translateZ(0) rotate(90deg);
   background-position: center;
 }
 .section:nth-child(4) {
-  background:url(images/portrait\ \(4\).jpeg);
+  background:url(images/portrait\ \(4\).JPG);
   background-size: cover;
   background-position: center;
 }
