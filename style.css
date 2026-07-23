@@ -443,6 +443,27 @@ nav a.active {
 }
 
 /* Dark mode styles */
+body.dark-mode{
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .card-container{
+    background-color: #797777;
+    box-shadow: 5px 5px 5px #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .top-bar {
+    background-color: #252525;
+}
+
+body.dark-mode .menuButton {
+    color: #e0e0e0;
+}
+
+
+
 
 
 /*mobile responsiveness*/
