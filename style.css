@@ -462,6 +462,29 @@ body.dark-mode .menuButton {
     color: #e0e0e0;
 }
 
+body.dark-mode .menuButton:hover {
+    color: #ffffff;
+}
+
+body.dark-mode .modal {
+    background-color: #797777;
+    color: #e0e0e0;
+}
+
+body.dark-mode .modal-top-bar {
+    background-color: #252525;
+}
+
+body.dark-mode .modal-body p,
+body.dark-mode .modal-section, 
+body.dark-mode .modal-body ul,
+body.dark-mode .modal-body ol {
+    color: #e0e0e0;
+}
+
+.body.darkmode .project-links a{
+    color: purple;
+}
 
 
 
